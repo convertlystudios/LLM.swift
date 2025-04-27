@@ -19,8 +19,8 @@ public actor LLMCore {
     private(set) var topP: Float
     private(set) var temp: Float
     
-    private let maxTokenCount: Int
-    private let totalTokenCount: Int
+    public let maxTokenCount: Int
+    public let totalTokenCount: Int
     private lazy var newlineToken: Token = llama_vocab_nl(vocab)
     private lazy var endToken: Token = llama_vocab_eos(vocab)
     private lazy var nullToken: Token = encode("\0", shouldAddBOS: false).first!
@@ -30,7 +30,7 @@ public actor LLMCore {
     private let tokenDecodeCache = NSCache<NSNumber, NSString>()
     
     private var shouldContinuePredicting = false
-    private var currentTokenCount: Int32 = 0
+    public var currentTokenCount: Int32 = 0
     
     func setParameters(seed: UInt32? = nil, topK: Int32? = nil, topP: Float? = nil, temp: Float? = nil) {
         if let seed { self.seed = seed }
