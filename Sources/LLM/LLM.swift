@@ -287,7 +287,7 @@ open class LLM: ObservableObject {
         topP: Float = 0.95,
         temp: Float = 0.8,
         historyLimit: Int = 8,
-        maxTokenCount: Int32 = 2048
+        maxTokenCount: Int32 = 512
     ) {
         self.path = path.cString(using: .utf8)!
         self.seed = seed
